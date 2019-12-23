@@ -31,4 +31,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api rootProject.ext.dependencies['retrofit']
+    api rootProject.ext.dependencies['rxandroid']
+    api rootProject.ext.dependencies['rxjava']
+    api rootProject.ext.dependencies['converter-gson']
+    api rootProject.ext.dependencies['adapter-rxjava']
+    api rootProject.ext.dependencies['okhttp']
+    api rootProject.ext.dependencies['logging-interceptor']
+    api rootProject.ext.dependencies['okhttp']
+
+
 }

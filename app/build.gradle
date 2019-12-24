@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion  rootProject.ext.android.compileSdkVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId "com.bool.uibaselibrary"
         minSdkVersion rootProject.ext.android.minSdkVersion

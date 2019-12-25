@@ -8,6 +8,9 @@ package com.bool.uibaselibrary.utils;
  */
 public class ByteUtils {
 
+    private static String hexStr =  "0123456789ABCDEF";  //全局
+
+
     /**
      * int转byte[]
      * 该方法将一个int类型的数据转换为byte[]形式，因为int为32bit，而byte为8bit所以在进行类型转换时，只会获取低8位，
@@ -40,6 +43,74 @@ public class ByteUtils {
         num |= ((bytes[1] << 16) & 0xFF0000);
         num |= ((bytes[0] << 24) & 0xFF0000);
         return num;
+    }
+
+
+    /**
+     * 字节数组转字符串
+     * @param b
+     * @return
+     */
+    public static String byteToString(byte[] b){
+        StringBuffer sb = new StringBuffer();
+        for(byte by:b){
+            String hex = "";
+            hex = String.valueOf(hexStr.charAt((by&0xF0)>>4));
+            hex += String.valueOf(hexStr.charAt(by&0x0F));
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
+
+
+    /**
+     * byte 转16 进制string
+     * @param src
+     * @return
+     */
+    public static String bytesToHexString(byte[] src){
+        StringBuilder stringBuilder = new StringBuilder("");
+        if (src == null || src.length <= 0) {
+            return null;
+        }
+        for (int i = 0; i < src.length; i++) {
+            int v = src[i] & 0xFF;
+            String hv = Integer.toHexString(v);
+            if (hv.length() < 2) {
+                stringBuilder.append(0);
+            }
+            stringBuilder.append(hv);
+        }
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 16 进制string转 byte 
+     * @param hexString the hex string
+     * @return byte[]
+     */
+    public static byte[] hexStringToBytes(String hexString) {
+        if (hexString == null || hexString.equals("")) {
+            return null;
+        }
+        hexString = hexString.toUpperCase();
+        int length = hexString.length() / 2;
+        char[] hexChars = hexString.toCharArray();
+        byte[] d = new byte[length];
+        for (int i = 0; i < length; i++) {
+            int pos = i * 2;
+            d[i] = (byte) (charToByte(hexChars[pos]) << 4 | charToByte(hexChars[pos + 1]));
+        }
+        return d;
+    }
+
+    /**
+     * Convert char to byte
+     * @param c char
+     * @return byte
+     */
+    private static byte charToByte(char c) {
+        return (byte) "0123456789ABCDEF".indexOf(c);
     }
 
 }

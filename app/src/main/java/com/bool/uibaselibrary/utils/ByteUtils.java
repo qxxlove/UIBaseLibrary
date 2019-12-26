@@ -67,6 +67,7 @@ public class ByteUtils {
      * byte 转16 进制string
      * @param src
      * @return
+     * https://www.cnblogs.com/Free-Thinker/p/6529584.html
      */
     public static String bytesToHexString(byte[] src){
         StringBuilder stringBuilder = new StringBuilder("");

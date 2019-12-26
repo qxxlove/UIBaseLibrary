@@ -36,12 +36,17 @@ public class MainActivity extends AppCompatActivity {
         String strByte = "DT EUP " + "\r\n";
         byte[] bytes = strByte.getBytes();
         printByte(bytes);      // 68 84 32 69 85 80 32 13 10 (ASCII码)
+        String  hello = new String(bytes);
+        Log.e("MainActivity", "String结果:" + hello);
+
         String strByte1 = "123456789";
         byte[] bytes1 = strByte1.getBytes();
         printByte(bytes1); //49,50,51,52,53,54,55,56,57
         int a = 1;
         byte[] bytesInt = ByteUtils.intToByteArray(a);
         printByte(bytesInt);   // 0001 (4字节)
+
+        byte []  by = new byte [] {'A','1','a'};
 
         // DT VER\r\n
         //E/TAG: write byte :68,84,32,86,69,82,13,10,

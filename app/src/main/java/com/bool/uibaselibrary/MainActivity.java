@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 return   a;
             }
         });
-        
+
 
         for (Student s : list) {
             Log.e("initList", "当前值:" + s.getName());

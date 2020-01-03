@@ -54,7 +54,16 @@ class MainActivity : AppCompatActivity() {
         initStudent()
         initNull()
         initEnum()
+        initExtend()
+    }
 
+
+    /**
+     * 扩展函数
+     * kotlin 是 将他当做静态函数来看待的
+     */
+    private fun initExtend() {
+        println("Kotlin".lastData())
     }
 
 
@@ -227,5 +236,17 @@ class MainActivity : AppCompatActivity() {
     fun sum(a: Int, b: Int, c: Int): Int {
         return a + b + c
     }
+
+    
+    /**
+     * 获取String 最后一位
+     *  分析：  我们想要扩展的类 或者接口名称，添加在函数名称的前面 ，这个 类的名称 称为 接收者类型，
+     *          所以在本例中 String 就是接收者类型，(再调用处)而 “kotlin” 就是接收者对象
+     *  原则：  扩展函数是 不希望你打破 原有类的封装性的，所以扩展函数是无法 访问到 私有的或者受保护的成员。
+     */
+    private fun String.lastData() : Char{
+        return this.get(this.length-1)
+    }
+
 
 }

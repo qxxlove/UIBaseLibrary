@@ -7,5 +7,5 @@ package com.bool.kotlinstudy.bean
  */
 const val indexx = 0  //     ==> public static final int
 open class People {
-    
+     
 }

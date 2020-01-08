@@ -2,9 +2,8 @@ package com.bool.kotlinstudy
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.bool.kotlinstudy.bean.Colors
-import com.bool.kotlinstudy.bean.Student
-import com.bool.kotlinstudy.bean.indexx
+import com.bool.kotlinstudy.`interface`.Clicker
+import com.bool.kotlinstudy.bean.*
 
 /**
  * Kotlin 入门
@@ -22,31 +21,73 @@ import com.bool.kotlinstudy.bean.indexx
  *      顶层属性即常量 类似于 psfs
  *
  *      扩展函数，属性
- *       
+ *
+ *   8. 中缀语法，扩展声明为成员
+ *   9. 解构 声明实际上就是将对象中所有属性，解构成一组属性变量，而且这些变量可以单独使用
+ *      实际上使用的是局部变量
+ *      解构声明的对象类型一定是data class，普通的class是不会生成对应的component的方法。
+ *
+ *    10. 接口，继承
+ *         kotlin中 的方法默认都是 final ，如果需要子类继承就要特地标记 open 修饰符
+ *         Kotlin 中所有类都有一个共同的超类 Any，这对于没有超类型声明的类是默认超类
+ *
+ *    11. 主构造函数和次构造函数的使用，还需进一步
+ *    12. 数据类 ，关键字：data
+ *        数据类必须满足几个条件
+              主构造函数需要至少有一个参数；
+              主构造函数的所有参数需要标记为 val 或 var；
+              数据类不能是抽象、开放、密封或者内部的；
+           如：CarData
+
+      13. 密封类
+          基于枚举，高于枚举
+         声明一个密封类，需要在类名前面添加 sealed 修饰符。虽然密封类也可以有子类，
+         但是所有子类都必须在与密封类自身相同的文件中声明
+         如： UserBean
+
+       14. 使用 is 运算符检测一个表达式是否某类型的一个实例(类似于Java中的instanceof关键字)。
+       15 泛型
+           ZooBean
+ 
+ *
+ *
  *   5. 枚举，when     现在不清楚
  *
  *
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , Clicker {
+
+
+    /**
+     * 接口回调
+     */
+    override fun click() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     // public  static final boolean  = false ;
-    /**常量  val <常量名> : <常量类型> = <初始值> */
+    /**常量  val <常量名> : <常量类型> = <初始值>
+     * 显然这只是一个不可修改的变量，并不能称之为常量： val numA = 6  ==>  public final int numA = 6
+     *  const val NUM_A = 6
+     * */
     val sum = 4
     /**变量  var <变量名> : <变量类型> = <初始值>*/
     var strName: String = "3"
     var strAge = 4
     /**延迟初始化话*/
     lateinit var stndent: Student
-
-
-    // set
+    /**继承属性*/
+    override var kCount: Int = 0
+    /**set*/
     val set = hashSetOf(1, 2, 3)
-    // list
+    /**list*/
     val arr = arrayListOf(2, 3, 4, 5)
-    // hashmap
+    /**hashmap*/
     val map = hashMapOf(1 to "A", 2 to "B")
 
-
+    /**泛型*/
+    var zooBean : ZooBean<Int> = ZooBean(1)
+   
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,12 +96,47 @@ class MainActivity : AppCompatActivity() {
         initNull()
         initEnum()
         initExtend()
+        initData()
+    }
+    
+    /**
+     *一个延迟初始化的字符串数组变量
+     */
+    private val mTitles : Array<String> by lazy {
+        arrayOf("sdf","sdfsadfas","adfsadfsd")
+    }
+    
+    // 声明一个延迟初始化的字符串
+    private val mStr : String by lazy{
+        "我是延迟初始化字符串变量"
     }
 
 
     /**
+     * 数据类调用
+     */
+    fun initData (){
+        var json = CarData(name = "ymc",age = 1)
+        val json1 = json.copy(age = 2)
+        println(json1)  // 默认调用 User的 tostring（）
+        println(mTitles[1])
+    }
+
+    /**
+     * 密封类的使用
+     */
+    fun eval(expr: UserBean): Double{
+        return when(expr) {
+            is UserBean.Const -> expr.number
+            is UserBean.Sum -> eval(expr.e1) + eval(expr.e2)
+            UserBean.NotANumber -> Double.NaN
+        }
+    }
+
+    /**
      * 扩展函数
-     * kotlin 是 将他当做静态函数来看待的
+     *     kotlin 是 将他当做静态函数来看待的
+     * 扩展属性 实际上就是提供某个属性访问的set,get方法
      */
     private fun initExtend() {
         println("Kotlin".lastData())
@@ -86,6 +162,9 @@ class MainActivity : AppCompatActivity() {
         if (a > b) a else b
     }
 
+    /**
+     * 获取和
+     */
     fun getTotalNumber(a: Int, b: Int) = a + b
 
     /**
@@ -125,6 +204,20 @@ class MainActivity : AppCompatActivity() {
                 .map { it.toUpperCase() }
                 .forEach { println(it) }
     }
+
+    /**
+     *  if、is、 when 结合
+     */
+    fun descript(obj: Any): String = when (obj) {
+        1 -> "one"
+        "hello" -> "hello word"
+        is Long -> "long type"
+        !is String -> "is not String"
+        else -> {
+            "unknown type"
+        }
+    }
+
 
 
     /**
@@ -174,6 +267,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * null 判断
+     */
+    fun Any?.toString(): String? {
+        if (this == null) return "null"
+        // 空检测之后，“this”会自动转换为非空类型，所以下面的 toString()
+        // 解析为 Any 类的成员函数
+        return toString()
+    }
 
     /**
      * 基础方法的定义：

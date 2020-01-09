@@ -17,7 +17,7 @@ import com.bool.kotlinstudy.bean.*
  *   6. 集合，数组
  *   7. kotlin 中的顶层函数也就是我们所说的工具类
  *      Java中调用Kotlin中定义顶层函数，一般是顶层文件名+"Kt"后缀作为静态函数的类名调用相应函数
-       通过Kotlin中的@file: JvmName("自定义生成类名")注解就可以自动生成对应Java调用类名
+通过Kotlin中的@file: JvmName("自定义生成类名")注解就可以自动生成对应Java调用类名
  *      顶层属性即常量 类似于 psfs
  *
  *      扩展函数，属性
@@ -34,28 +34,38 @@ import com.bool.kotlinstudy.bean.*
  *    11. 主构造函数和次构造函数的使用，还需进一步
  *    12. 数据类 ，关键字：data
  *        数据类必须满足几个条件
-              主构造函数需要至少有一个参数；
-              主构造函数的所有参数需要标记为 val 或 var；
-              数据类不能是抽象、开放、密封或者内部的；
-           如：CarData
+主构造函数需要至少有一个参数；
+主构造函数的所有参数需要标记为 val 或 var；
+数据类不能是抽象、开放、密封或者内部的；
+如：CarData
 
-      13. 密封类
-          基于枚举，高于枚举
-         声明一个密封类，需要在类名前面添加 sealed 修饰符。虽然密封类也可以有子类，
-         但是所有子类都必须在与密封类自身相同的文件中声明
-         如： UserBean
+13. 密封类
+基于枚举，高于枚举
+声明一个密封类，需要在类名前面添加 sealed 修饰符。虽然密封类也可以有子类，
+但是所有子类都必须在与密封类自身相同的文件中声明
+如： UserBean
 
-       14. 使用 is 运算符检测一个表达式是否某类型的一个实例(类似于Java中的instanceof关键字)。
-       15 泛型
-           ZooBean
- 
+14. 使用 is 运算符检测一个表达式是否某类型的一个实例(类似于Java中的instanceof关键字)。
+15 泛型
+ZooBean
+16. 一元操作符    重载    和java 是一样的 ，需要注意kotlin 的写法
++a 	   a.unaryPlus()
+-a 	   a.unaryMinus()
+!a 	   a.not()
+
+后缀自增：表示为操作数进行自增操作，其操作数为数值型。例如：a++
+后缀自减：表示为操作数进行自减操作，其操作数为数值型。例如：a--
+前缀自增：表示为操作数进行自增操作，其操作数为数值型。例如：++a
+前缀自减：表示为操作数进行自增操作，其操作数为数值型。例如：--a
+
+
  *
  *
  *   5. 枚举，when     现在不清楚
  *
  *
  */
-class MainActivity : AppCompatActivity() , Clicker {
+class MainActivity : AppCompatActivity(), Clicker {
 
 
     /**
@@ -86,8 +96,8 @@ class MainActivity : AppCompatActivity() , Clicker {
     val map = hashMapOf(1 to "A", 2 to "B")
 
     /**泛型*/
-    var zooBean : ZooBean<Int> = ZooBean(1)
-   
+    var zooBean: ZooBean<Int> = ZooBean(1)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -98,16 +108,16 @@ class MainActivity : AppCompatActivity() , Clicker {
         initExtend()
         initData()
     }
-    
+
     /**
      *一个延迟初始化的字符串数组变量
      */
-    private val mTitles : Array<String> by lazy {
-        arrayOf("sdf","sdfsadfas","adfsadfsd")
+    private val mTitles: Array<String> by lazy {
+        arrayOf("sdf", "sdfsadfas", "adfsadfsd")
     }
-    
+
     // 声明一个延迟初始化的字符串
-    private val mStr : String by lazy{
+    private val mStr: String by lazy {
         "我是延迟初始化字符串变量"
     }
 
@@ -115,8 +125,8 @@ class MainActivity : AppCompatActivity() , Clicker {
     /**
      * 数据类调用
      */
-    fun initData (){
-        var json = CarData(name = "ymc",age = 1)
+    fun initData() {
+        var json = CarData(name = "ymc", age = 1)
         val json1 = json.copy(age = 2)
         println(json1)  // 默认调用 User的 tostring（）
         println(mTitles[1])
@@ -125,8 +135,8 @@ class MainActivity : AppCompatActivity() , Clicker {
     /**
      * 密封类的使用
      */
-    fun eval(expr: UserBean): Double{
-        return when(expr) {
+    fun eval(expr: UserBean): Double {
+        return when (expr) {
             is UserBean.Const -> expr.number
             is UserBean.Sum -> eval(expr.e1) + eval(expr.e2)
             UserBean.NotANumber -> Double.NaN
@@ -144,9 +154,9 @@ class MainActivity : AppCompatActivity() , Clicker {
 
 
     fun getColor(color: Colors) {
-        var  a  = 1
-        when (a){
-            
+        var a = 1
+        when (a) {
+
         }
     }
 
@@ -219,7 +229,6 @@ class MainActivity : AppCompatActivity() , Clicker {
     }
 
 
-
     /**
      * 初始化变量
      */
@@ -246,6 +255,22 @@ class MainActivity : AppCompatActivity() , Clicker {
 
     /**
      * 非空语句
+    Evils其实不是一个操作符，而是evil的复数，而evil的意思在这里可以理解为屏蔽、安全的操作符，这样的操作符有三种：
+    ?: 这个操作符表示在判断一个可空类型时，会返回一个我们自己设定好的默认值.
+    !! 这个操作符表示在判断一个可空类型时，会显示的抛出空引用异常（NullPointException）.
+    as? 这个操作符表示为安全的类型转换.
+
+    因为在使用一个可空类型变量时，在该变量后面加上!!操作符，会显示的抛出NullPointException异常
+    val testStr : String? = null
+    println(testStr!!.length)
+
+    // 会抛出ClassCastException异常
+    val num1 : Int? = "Koltin" as Int
+    println("nun1 = $num1")
+
+    val num2 : Int? = "Koltin" as? Int
+    println("nun2 = $num2)
+    num2 = null
      */
     private fun initNull() {
         //类型后面加 ? 表示可为空
@@ -258,14 +283,40 @@ class MainActivity : AppCompatActivity() , Clicker {
         val ages1 = age?.toInt()
         println(ages1)    //  null
         //使用 ”?:“  表示age为null返回-1
+        //当我们定义了一个可空类型的变量时，如果该变量不为空，则使用，反之使用另外一个不为空的值
         val ages2 = age?.toInt() ?: -1
         println(ages2)       // -1 
 
         println(getStringLengthOne(""))
         println(getStringLengthTwo(""))
 
+        initLet()
 
     }
+
+    /**
+     * let 操作符
+     *let操作符的作用：当时用符号?.验证的时候忽略掉null
+    let的用法：变量?.let{ ... }
+     */
+    private fun initLet() {
+
+        val arrTest: Array<Int?> = arrayOf(1, 2, null, 3, null, 5, 6, null)
+
+// 传统写法
+        for (index in arrTest) {
+            if (index == null) {
+                continue
+            }
+            println("index => $index")
+        }
+
+// let写法
+        for (index in arrTest) {
+            index?.let { println("index => $it") }
+        }
+    }
+
 
     /**
      * null 判断
@@ -339,15 +390,15 @@ class MainActivity : AppCompatActivity() , Clicker {
         return a + b + c
     }
 
-    
+
     /**
      * 获取String 最后一位
      *  分析：  我们想要扩展的类 或者接口名称，添加在函数名称的前面 ，这个 类的名称 称为 接收者类型，
      *          所以在本例中 String 就是接收者类型，(再调用处)而 “kotlin” 就是接收者对象
      *  原则：  扩展函数是 不希望你打破 原有类的封装性的，所以扩展函数是无法 访问到 私有的或者受保护的成员。
      */
-    private fun String.lastData() : Char{
-        return this.get(this.length-1)
+    private fun String.lastData(): Char {
+        return this.get(this.length - 1)
     }
 
 

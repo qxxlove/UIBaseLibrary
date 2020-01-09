@@ -40,6 +40,7 @@ public class JavaActivity extends AppCompatActivity {
         // 得到Object类型，如果想要String 还需要强转
         Object s = objs.get(0);
 
+        
     }
 
 

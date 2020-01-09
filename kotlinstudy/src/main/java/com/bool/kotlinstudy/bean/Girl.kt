@@ -1,7 +1,5 @@
 package com.bool.kotlinstudy.bean
 
-import com.bool.kotlinstudy.R
-
 /**
  * 主题构造函数
  * Kotlin 中的一个类可以有一个主构造函数   以及 一个或多个次构造函数。 主构造函数是类头的一部分：它跟在类名后。
@@ -13,7 +11,7 @@ import com.bool.kotlinstudy.R
  *@author TianMingming
  *@date 2020/1/7 13:46
  */
-class Girl constructor  (name : String) {
+open class Girl constructor  (name : String) {
 
     init {
         print("jasdhfjshdjahsjfdhjakfhjkf")

@@ -41,5 +41,4 @@ dependencies {
     api rootProject.ext.dependencies['logging-interceptor']
     api rootProject.ext.dependencies['okhttp']
 
-
 }

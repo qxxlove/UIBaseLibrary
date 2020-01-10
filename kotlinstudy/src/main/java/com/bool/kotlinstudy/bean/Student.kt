@@ -2,6 +2,8 @@ package com.bool.kotlinstudy.bean
 
 /**
  * List集合如何定义
+ *
+ *  get,set属性以及可以自定义
  */
 class Student : People() {
 

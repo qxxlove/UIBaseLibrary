@@ -19,6 +19,12 @@ public class JavaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java);
         initData();
+        initLambda();
+    }
+
+    private void initLambda() {
+
+
     }
 
     private void initData() {

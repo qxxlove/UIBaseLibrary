@@ -17,7 +17,7 @@ import com.bool.kotlinstudy.bean.*
  *   6. 集合，数组
  *   7. kotlin 中的顶层函数也就是我们所说的工具类
  *      Java中调用Kotlin中定义顶层函数，一般是顶层文件名+"Kt"后缀作为静态函数的类名调用相应函数
-通过Kotlin中的@file: JvmName("自定义生成类名")注解就可以自动生成对应Java调用类名
+         通过Kotlin中的@file: JvmName("自定义生成类名")注解就可以自动生成对应Java调用类名
  *      顶层属性即常量 类似于 psfs
  *
  *      扩展函数，属性
@@ -27,41 +27,51 @@ import com.bool.kotlinstudy.bean.*
  *      实际上使用的是局部变量
  *      解构声明的对象类型一定是data class，普通的class是不会生成对应的component的方法。
  *
- *    10. 接口，继承
+ *    10. 接口，继承   eg:  DoSomeThing, XueXue
  *         kotlin中 的方法默认都是 final ，如果需要子类继承就要特地标记 open 修饰符
  *         Kotlin 中所有类都有一个共同的超类 Any，这对于没有超类型声明的类是默认超类
  *
  *    11. 主构造函数和次构造函数的使用，还需进一步  eg:girl
  *    12. 数据类 ，关键字：data
  *        数据类必须满足几个条件
-主构造函数需要至少有一个参数；
-主构造函数的所有参数需要标记为 val 或 var；
-数据类不能是抽象、开放、密封或者内部的；
-如：CarData
+ *           主构造函数需要至少有一个参数；
+ *           主构造函数的所有参数需要标记为 val 或 var；
+ *           数据类不能是抽象、开放、密封或者内部的；
+ *            如：CarData
 
-13. 密封类
-基于枚举，高于枚举
-声明一个密封类，需要在类名前面添加 sealed 修饰符。虽然密封类也可以有子类，
-但是所有子类都必须在与密封类自身相同的文件中声明
-如： UserBean
+ *        13. 密封类
+ *            基于枚举，高于枚举
+ *            声明一个密封类，需要在类名前面添加 sealed 修饰符。虽然密封类也可以有子类，
+ *            但是所有子类都必须在与密封类自身相同的文件中声明
+ *            如： UserBean
 
-14. 使用 is 运算符检测一个表达式是否某类型的一个实例(类似于Java中的instanceof关键字)。
-15 泛型
-ZooBean
-16. 一元操作符    重载    和java 是一样的 ，需要注意kotlin 的写法
-+a 	   a.unaryPlus()
--a 	   a.unaryMinus()
-!a 	   a.not()
+ *        14. 使用 is 运算符检测一个表达式是否某类型的一个实例(类似于Java中的instanceof关键字)。
+ *        15 泛型
+ *           ZooBean
+ *        16. 一元操作符    重载    和java 是一样的 ，需要注意kotlin 的写法
+ *           +a 	   a.unaryPlus()
+ *           -a 	   a.unaryMinus()
+ *           !a 	   a.not()
 
-后缀自增：表示为操作数进行自增操作，其操作数为数值型。例如：a++
-后缀自减：表示为操作数进行自减操作，其操作数为数值型。例如：a--
-前缀自增：表示为操作数进行自增操作，其操作数为数值型。例如：++a
-前缀自减：表示为操作数进行自增操作，其操作数为数值型。例如：--a
+ *           后缀自增：表示为操作数进行自增操作，其操作数为数值型。例如：a++
+ *           后缀自减：表示为操作数进行自减操作，其操作数为数值型。例如：a--
+ *           前缀自增：表示为操作数进行自增操作，其操作数为数值型。例如：++a
+ *           前缀自减：表示为操作数进行自增操作，其操作数为数值型。例如：--a
 
 
  *
  *
- *   5. 枚举，when     现在不清楚
+ *         17. 枚举 实际开发中有什么用？
+ *         18 . 抽象类
+ *              抽象类，可以理解为类定义了一个模板。所有的子类都是根据这个模板是填充自己的代码。
+ *              eg: AbsStudentClass
+ *         19. 嵌套类 (内部类)
+ *             声明一个内部类使用inner关键字
+ *             匿名内部类
+ *             局部类 同java
+ *             静态类：
+ *             
+ *
  *
  *
  */
@@ -101,12 +111,13 @@ class MainActivity : AppCompatActivity(), Clicker {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initVar()
-        initStudent()
-        initNull()
-        initEnum()
-        initExtend()
+        //initVar()
+        //initStudent()
+        // initNull()
+        // initEnum()
+        //initExtend()
         initData()
+
     }
 
     /**
@@ -127,19 +138,28 @@ class MainActivity : AppCompatActivity(), Clicker {
      */
     fun initData() {
         var json = CarData(name = "ymc", age = 1)
+        /**解构*/
+        val (name, pwd) = json
+        println("name = $name\tpwd = $pwd")
+        /**修改属性*/
         val json1 = json.copy(age = 2)
         println(json1)  // 默认调用 User的 tostring（）
         println(mTitles[1])
+        println("集合：" + listOf(json))
+        println("转换:" + json.to(2))
     }
 
     /**
      * 密封类的使用
+     *      好处：
+     *      有效的保护代码
+     *     在使用when表达式 的时候，如果能够验证语句覆盖了所有情况，就不需要为该语句再添加一个else子句了。
      */
     fun eval(expr: UserBean): Double {
         return when (expr) {
             is UserBean.Const -> expr.number
             is UserBean.Sum -> eval(expr.e1) + eval(expr.e2)
-            UserBean.NotANumber -> Double.NaN
+            UserBean.NotANumber -> Double.NaN      // 什么作用 ？
         }
     }
 
@@ -150,9 +170,13 @@ class MainActivity : AppCompatActivity(), Clicker {
      */
     private fun initExtend() {
         println("Kotlin".lastData())
+        indexx
     }
 
 
+    /**
+     * 枚举
+     */
     fun getColor(color: Colors) {
         var a = 1
         when (a) {
@@ -160,8 +184,29 @@ class MainActivity : AppCompatActivity(), Clicker {
         }
     }
 
+    /**
+     * 枚举
+     *   ① 每个枚举常量都包含两个属性：name（枚举常量名）和ordinal（枚举常量位置）
+     *   ② 提供了values()和valueOf()方法来检测指定的名称 与 枚举类中定义的任何枚举常量 是否匹配。
+     *   自 Kotlin 1.1起，可以使用 enumValues<T>()和 enumValueOf<T>()函数以泛型的方式访问枚举类中的常量。
+     *
+     */
     private fun initEnum() {
-        indexx
+        println("name = " + ColorTwos.RED.name + "\tordinal = " + ColorTwos.RED.ordinal)
+        println("name = " + ColorTwos.WHITE.name + "\tordinal = " + ColorTwos.WHITE.ordinal)
+        println("name = " + ColorTwos.BLACK.name + "\tordinal = " + ColorTwos.BLACK.ordinal)
+        println("name = " + ColorTwos.GREEN.name + "\tordinal = " + ColorTwos.GREEN.ordinal)
+
+        println(enumValues<ColorTwos>().joinToString { it.name })
+        println(enumValueOf<ColorTwos>("RED"))
+
+        /**若使用Color.valueOf("不存在的枚举常量")，则会抛出IllegalArgumentException 异常，即枚举变量不存在。
+         * 若使用Color.values()[大于枚举常量位置]，则会抛出下标越界异常。*/
+        println(ColorTwos.valueOf("RED"))
+        println(ColorTwos.values()[0])
+        println(ColorTwos.values()[1])
+        println(ColorTwos.values()[2])
+        println(ColorTwos.values()[3])
     }
 
 
@@ -235,8 +280,8 @@ class MainActivity : AppCompatActivity(), Clicker {
     private fun initVar() {
         strAge = 1
         strName = ""
-        println(strAge)
-        println("姓名：" + strName)
+        println("变量" + strAge)
+        println("变量姓名：" + strName)
     }
 
     /**

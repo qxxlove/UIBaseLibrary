@@ -51,10 +51,29 @@ class LambdaActivity : AppCompatActivity() {
         initHigherOrder()
         initHigherOrderTwo()
         initOther()
-
-         dataChanged.observe(this, Observer {  })
+        initStutdy()
+        dataChanged.observe(this, Observer { })
 
     }
+
+
+    /**
+     *  思考： 如果你想把“一块代码”赋给一个Java变量，应该怎么做呢？
+     *
+     */
+    fun initStutdy() {
+        var a = "哈哈"
+        var study = study(a)
+       
+    }
+
+    /**
+     * 一个简单函数方法
+     */
+     fun study(name: String): Unit {
+        println(name)
+    }
+
 
     fun initOther() {
         test
@@ -268,7 +287,8 @@ class LambdaActivity : AppCompatActivity() {
     }
 
     // lambda
-    val test1: (Int, Int) -> Int = { a, b -> a + b }
+    val test1: (Int, Int) -> Int =
+            { a, b -> a + b }
     // 或者
     val test2 = { a: Int, b: Int -> a + b }
 

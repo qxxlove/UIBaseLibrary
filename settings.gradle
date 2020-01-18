@@ -1,1 +1,1 @@
-include ':app', ':baselibrary', ':rajavaandroid', ':kotlinstudy'
+include ':app', ':baselibrary', ':rajavaandroid', ':kotlinstudy', ':jetpackmvvm'

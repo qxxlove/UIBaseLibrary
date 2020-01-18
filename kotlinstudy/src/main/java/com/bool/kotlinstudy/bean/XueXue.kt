@@ -2,6 +2,8 @@ package com.bool.kotlinstudy.bean
 
 /**
  * 接口实现类
+ *
+ *     TODO ： 此函数的作用：显示抛出NotImplementedError错误。NotImplementedError错误类继承至Java中的Error
  *@author TianMingming
  *@date 2020/1/14 13:39
  */

@@ -1,7 +1,7 @@
 package com.bool.kotlinstudy
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.bool.kotlinstudy.`interface`.Clicker
 import com.bool.kotlinstudy.bean.*
 
@@ -338,6 +338,20 @@ class MainActivity : AppCompatActivity(), Clicker {
         initLet()
 
     }
+
+    /**
+     * 双冒号使用：
+     *     一般情况，我们调用当前类的方法 this 都是可省略的，这里之所以不可省略的原因是
+          为了防止作用域混淆 ， :: 调用的函数如果是类的成员函数或者是扩展函数，必须使用限定符,比如this
+          如果把 isOdd 写到 class 外部 (全局) 这里也是可以省略限定符。
+     */
+    fun isOdd(x: Int) = x % 2 != 0
+
+    fun test() {
+        var list = listOf(1, 2, 3, 4, 5)
+        println(list.filter(this::isOdd))
+    }
+
 
     /**
      * let 操作符

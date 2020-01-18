@@ -1,10 +1,11 @@
 package com.bool.uibaselibrary.basics;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.bool.uibaselibrary.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 位运算

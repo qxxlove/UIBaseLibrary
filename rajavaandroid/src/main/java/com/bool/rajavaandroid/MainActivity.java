@@ -1,13 +1,13 @@
 package com.bool.rajavaandroid;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.bool.rajavaandroid.bean.MobileAddress;
 import com.google.gson.Gson;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;

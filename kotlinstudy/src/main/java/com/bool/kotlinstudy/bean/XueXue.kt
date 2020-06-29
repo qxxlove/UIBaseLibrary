@@ -25,4 +25,12 @@ class XueXue : DoSomeThing {
     override fun fun3(num: Int): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override fun fun4(): String {
+        return super.fun4()
+    }
+
+    override fun fun5() {
+        super.fun5()
+    }
 }

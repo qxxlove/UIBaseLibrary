@@ -14,5 +14,4 @@ enum class ColorTwos (var argb : Int) {
     BLACK(0x000000),
     GREEN(0x00FF00)
 
-    
 }

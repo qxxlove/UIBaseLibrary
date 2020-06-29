@@ -40,5 +40,7 @@ dependencies {
     api rootProject.ext.dependencies['okhttp']
     api rootProject.ext.dependencies['logging-interceptor']
     api rootProject.ext.dependencies['okhttp']
+    api rootProject.ext.dependencies['recyclerview-v7']
+
 
 }

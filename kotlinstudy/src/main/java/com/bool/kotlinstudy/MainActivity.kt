@@ -6,8 +6,16 @@ import com.bool.kotlinstudy.`interface`.Clicker
 import com.bool.kotlinstudy.bean.*
 
 /**
- * Kotlin 入门
+ *  Kotlin 入门
  * https://www.jianshu.com/p/fa48ae888879
+ *  Kotlin学习手册（一）类与继承
+ *  https://www.jianshu.com/p/234531a5a1a7
+ *  Kotlin 实战
+ *  https://juejin.im/post/5ec0b6bef265da7bf873ec79
+ *  Kotlin系列之let、with、run、apply、also函数的使用
+ *  https://blog.csdn.net/u013064109/article/details/78786646?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+ *  一文弄懂 kotlin lambda与高阶函数
+ *   https://juejin.im/post/5e8893ab51882573744c5606
  *
  *   1. 常量
  *   2. 变量
@@ -77,18 +85,11 @@ import com.bool.kotlinstudy.bean.*
  */
 class MainActivity : AppCompatActivity(), Clicker {
 
-
-    /**
-     * 接口回调
-     */
-    override fun click() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     // public  static final boolean  = false ;
     /**常量  val <常量名> : <常量类型> = <初始值>
-     * 显然这只是一个不可修改的变量，并不能称之为常量： val numA = 6  ==>  public final int numA = 6
-     *  const val NUM_A = 6
+     * 显然这只是一个不可修改的变量，并不能称之为常量：
+     *    val numA = 6  ==>  public final int numA = 6
+     *    const val NUM_A = 6 = > public static final int numA = 6
      * */
     val sum = 4
     /**变量  var <变量名> : <变量类型> = <初始值>*/
@@ -104,9 +105,9 @@ class MainActivity : AppCompatActivity(), Clicker {
     val arr = arrayListOf(2, 3, 4, 5)
     /**hashmap*/
     val map = hashMapOf(1 to "A", 2 to "B")
-
     /**泛型*/
     var zooBean: ZooBean<Int> = ZooBean(1)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,7 +117,7 @@ class MainActivity : AppCompatActivity(), Clicker {
         // initNull()
         // initEnum()
         //initExtend()
-        initData()
+         initData()
 
     }
 
@@ -127,11 +128,12 @@ class MainActivity : AppCompatActivity(), Clicker {
         arrayOf("sdf", "sdfsadfas", "adfsadfsd")
     }
 
-    // 声明一个延迟初始化的字符串
+    /**
+     *  声明一个延迟初始化的字符串
+     */
     private val mStr: String by lazy {
         "我是延迟初始化字符串变量"
     }
-
 
     /**
      * 数据类调用
@@ -143,7 +145,9 @@ class MainActivity : AppCompatActivity(), Clicker {
         println("name = $name\tpwd = $pwd")
         /**修改属性*/
         val json1 = json.copy(age = 2)
-        println(json1)  // 默认调用 User的 tostring（）
+        // 默认调用 User的 tostring（）
+        println(json1)
+
         println(mTitles[1])
         println("集合：" + listOf(json))
         println("转换:" + json.to(2))
@@ -153,7 +157,8 @@ class MainActivity : AppCompatActivity(), Clicker {
      * 密封类的使用
      *      好处：
      *      有效的保护代码
-     *     在使用when表达式 的时候，如果能够验证语句覆盖了所有情况，就不需要为该语句再添加一个else子句了。
+     *     在使用when表达式 的时候，如果能够验证语句覆盖了所有情况，
+     *     就不需要为该语句再添加一个else子句了。
      */
     fun eval(expr: UserBean): Double {
         return when (expr) {
@@ -172,7 +177,6 @@ class MainActivity : AppCompatActivity(), Clicker {
         println("Kotlin".lastData())
         indexx
     }
-
 
     /**
      * 枚举
@@ -200,7 +204,8 @@ class MainActivity : AppCompatActivity(), Clicker {
         println(enumValues<ColorTwos>().joinToString { it.name })
         println(enumValueOf<ColorTwos>("RED"))
 
-        /**若使用Color.valueOf("不存在的枚举常量")，则会抛出IllegalArgumentException 异常，即枚举变量不存在。
+        /**若使用Color.valueOf("不存在的枚举常量")，则会抛出IllegalArgumentException 异常，
+         * 即枚举变量不存在。
          * 若使用Color.values()[大于枚举常量位置]，则会抛出下标越界异常。*/
         println(ColorTwos.valueOf("RED"))
         println(ColorTwos.values()[0])
@@ -342,11 +347,11 @@ class MainActivity : AppCompatActivity(), Clicker {
     /**
      * 双冒号使用：
      *     一般情况，我们调用当前类的方法 this 都是可省略的，这里之所以不可省略的原因是
-          为了防止作用域混淆 ， :: 调用的函数如果是类的成员函数或者是扩展函数，必须使用限定符,比如this
-          如果把 isOdd 写到 class 外部 (全局) 这里也是可以省略限定符。
+          为了防止作用域混淆 ，
+            :: 调用的函数如果是类的成员函数或者是扩展函数，必须使用限定符,比如this
+               如果把 isOdd 写到 class 外部 (全局) 这里也是可以省略限定符。
      */
     fun isOdd(x: Int) = x % 2 != 0
-
     fun test() {
         var list = listOf(1, 2, 3, 4, 5)
         println(list.filter(this::isOdd))
@@ -355,14 +360,14 @@ class MainActivity : AppCompatActivity(), Clicker {
 
     /**
      * let 操作符
-     *let操作符的作用：当时用符号?.验证的时候忽略掉null
-    let的用法：变量?.let{ ... }
+     * let操作符的作用：当时用符号?.验证的时候忽略掉null
+       let的用法：变量?.let{ ... }
      */
     private fun initLet() {
 
         val arrTest: Array<Int?> = arrayOf(1, 2, null, 3, null, 5, 6, null)
 
-// 传统写法
+        // 传统写法
         for (index in arrTest) {
             if (index == null) {
                 continue
@@ -370,7 +375,7 @@ class MainActivity : AppCompatActivity(), Clicker {
             println("index => $index")
         }
 
-// let写法
+        // let写法
         for (index in arrTest) {
             index?.let { println("index => $it") }
         }
@@ -454,11 +459,17 @@ class MainActivity : AppCompatActivity(), Clicker {
      * 获取String 最后一位
      *  分析：  我们想要扩展的类 或者接口名称，添加在函数名称的前面 ，这个 类的名称 称为 接收者类型，
      *          所以在本例中 String 就是接收者类型，(再调用处)而 “kotlin” 就是接收者对象
-     *  原则：  扩展函数是 不希望你打破 原有类的封装性的，所以扩展函数是无法 访问到 私有的或者受保护的成员。
+     *  原则：  扩展函数是 不希望你打破 原有类的封装性的，
+     *          所以扩展函数是无法 访问到 私有的或者受保护的成员。
      */
     private fun String.lastData(): Char {
         return this.get(this.length - 1)
     }
 
-
+    /**
+     * 接口回调
+     */
+    override fun click() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

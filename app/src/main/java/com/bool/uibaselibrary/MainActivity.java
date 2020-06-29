@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.act_main_tv_to_bit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, BitActivity.class));
+                startActivity(new Intent(MainActivity.this, RecyclerViewExpendActivity.class));
             }
         });
     }

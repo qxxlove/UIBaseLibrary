@@ -4,10 +4,11 @@ package com.bool.kotlinstudy.bean
  * 泛型接口
  *     类型协变
  *  in T:     来确保Source的成员函数只能消费T类型，而不能返回T类型
-    out R：  来确保Source的成员函数只能返回R类型，而不能消费R类型
-    实际上是定义了类型参数在该类或者接口的用途，是用来消费的还是用来返回的，对其做了相应的限定
-       类型投射
-       泛型函数
+    out R：   来确保Source的成员函数只能返回R类型，而不能消费R类型
+     实际上是定义了类型参数在该类或者接口的用途，
+       是用来消费的还是用来返回的，对其做了相应的限定
+     类型投射
+     泛型函数
 
     泛型擦除的原理是什么？
 
@@ -25,7 +26,8 @@ interface Source <in T, out R> {
 
     /**
      * eg ：
-     *   from的泛型参数使用了协变注解out修饰，意味着该参数不能在该函数中消费，在该方法中 禁止 对该参数进行任何操作。
+     *   from的泛型参数使用了协变注解out修饰，意味着该参数不能在该函数中消费，
+     *   在该方法中 禁止 对该参数进行任何操作。
 
        对于fill函数中，dest的泛型参数使用了协变注解in修饰，
          Array<in String>与Java的 Array < ? super String> 相同,
@@ -54,7 +56,8 @@ interface Source <in T, out R> {
         return  listOf(item)
     }
 
-    fun <T> T.basicToString() : String {  // 扩展函数
+    // 扩展函数
+    fun <T> T.basicToString() : String {
         // ……
         return  ""
     }

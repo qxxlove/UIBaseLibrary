@@ -14,22 +14,24 @@ import java.util.concurrent.locks.Lock
  *
  *   语法：
  *         1. 无参数的情况 ：
-val/var 变量名 = { 操作的代码 }
+          val/var 变量名 = { 操作的代码 }
 
-2. 有参数的情况
-val/var 变量名 : (参数的类型，参数类型，...) -> 返回值类型 = {参数1，参数2，... -> 操作参数的代码 }
+          2. 有参数的情况
+          val/var 变量名 : (参数的类型，参数类型，...) -> 返回值类型
+                           = {参数1，参数2，... -> 操作参数的代码 }
 
-可等价于
-// 此种写法：即表达式的返回值类型会根据操作的代码自推导出来。
-val/var 变量名 = { 参数1 ： 类型，参数2 : 类型, ... -> 操作参数的代码 }
+            可等价于
+            // 此种写法：即表达式的返回值类型会根据操作的代码自推导出来。
+            val/var 变量名 = { 参数1 ： 类型，参数2 : 类型, ... -> 操作参数的代码 }
 
-3. lambda表达式作为函数中的参数的时候，这里举一个例子：
-fun test(a : Int, 参数名 : (参数1 ： 类型，参数2 : 类型, ... ) -> 表达式返回类型){
-...
-}
+          3. lambda表达式作为函数中的参数的时候，这里举一个例子：
+             fun test(a : Int, 参数名 : (参数1 ： 类型，参数2 : 类型, ... ) -> 表达式返回类型){
+              ...
+              }
 
-4. 所谓闭包，即是函数中包含函数，这里的函数我们可以包含(Lambda表达式，匿名函数，局部函数，对象表达式)。
-5. 高阶函数即指：将函数用作一个函数的参数或者返回值的函数
+          4. 所谓闭包，即是函数中包含函数，
+                    这里的函数我们可以包含(Lambda表达式，匿名函数，局部函数，对象表达式)。
+          5. 高阶函数即指：将函数用作一个函数的参数或者返回值的函数
 
  *
  */
@@ -103,7 +105,7 @@ class LambdaActivity : AppCompatActivity() {
         //匿名函数作为接收者类型
         val iop = fun Int.(other: Int): Int = this + other
         println(2.iop(3))
-        // 要用Lambda表达式作为接收者类型的前提是接收着类型可以从上下文中推断出来。
+        // 要用 Lambda表达式 作为 接收者类型 的前提是 接收着类型 可以从上下文中推断出来。
         html {
             // 带接收者的 lambda 由此开始
             body()   // 调用该接收者对象的一个方法
@@ -116,6 +118,24 @@ class LambdaActivity : AppCompatActivity() {
         println(t)
         //引用外部变量，并改变外部变量的值
         arr.filter { it < 7 }.forEach { sum += it }    // 结果： 9
+    }
+
+
+    fun html(init: HTML.() -> Unit): HTML {
+        // 创建接收者对象
+        val html = HTML()
+        // 将该接收者对象传给该 lambda
+        html.init()
+        return html
+    }
+
+    /**
+     * Lambda表达式作为接收者类型
+     */
+    class HTML {
+        fun body() {
+            println("Lambda表达式作为接收者类型")
+        }
     }
 
 
@@ -133,7 +153,8 @@ class LambdaActivity : AppCompatActivity() {
         // 即我可以在run()函数中写一些和项目无关的代码，因为它不会影响项目的正常运行。
         testRun1()
         //因为run函数执行了我传进去的lambda表达式并返回了执行的结果，
-        // 所以当一个业务逻辑都需要执行同一段代码而根据不同的条件去判断得到不同结果的时候。可以用到run函数
+        // 所以当一个业务逻辑都需要执行同一段代码而根据不同的条件去判断得到不同结果的时候。
+        // 可以用到run函数
         println("num = $num")     // 10
         // T.run 
         val str = "kotlin"
@@ -149,7 +170,8 @@ class LambdaActivity : AppCompatActivity() {
             println("first = ${first()}")
             println("last = ${last()}")
         }
-        // T.apply()函数 // T.also()函数    T.apply的作用除了实现能实现T.run函数的作用外，还可以后续的再对此操作
+        // T.apply()函数 // T.also()函数
+        // T.apply的作用除了实现能实现T.run函数的作用外，还可以后续的再对此操作
         // 使用： 为TextView ,Button 设置属性、 设置为Fragment设置数据传递
         btn.apply {
             //text = "kotlin"
@@ -243,31 +265,20 @@ class LambdaActivity : AppCompatActivity() {
     }.length
 
 
-    /**
-     * Lambda表达式作为接收者类型
-     */
-    class HTML {
-        fun body() {
-            println("Lambda表达式作为接收者类型")
-        }
-    }
 
-    fun html(init: HTML.() -> Unit): HTML {
-        val html = HTML()  // 创建接收者对象
-        html.init()        // 将该接收者对象传给该 lambda
-        return html
-    }
+
 
 
     fun initLambda() {
         // 这里举例一个Android中最常见的按钮点击事件的例子
         btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                //Toast.makeText(LambdaActivity.this,"onClick",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(LambdaActivity.this, "onClick", Toast.LENGTH_SHORT).show() }
             }
         })
 
-        btn.setOnClickListener { Toast.makeText(this, "onClick", Toast.LENGTH_SHORT).show() }
+        btn.setOnClickListener {
+            Toast.makeText(this, "onClick", Toast.LENGTH_SHORT).show() }
     }
 
 
@@ -276,7 +287,6 @@ class LambdaActivity : AppCompatActivity() {
     fun test() {
         println("无参数")
     }
-
     // lambda代码
     val test = { println("无参数") }
 
@@ -285,7 +295,6 @@ class LambdaActivity : AppCompatActivity() {
     fun test(a: Int, b: Int): Int {
         return a + b
     }
-
     // lambda
     val test1: (Int, Int) -> Int =
             { a, b -> a + b }
@@ -296,7 +305,6 @@ class LambdaActivity : AppCompatActivity() {
     fun sum(num1: Int, num2: Int): Int {
         return num1 + num2
     }
-
     /**lambda表达式作为函数中的参数的时候*/
     //invoke()函数：表示为通过函数变量调用自身，因为上面例子中的变量b是一个匿名函数。
     fun test(a: Int, b: (num1: Int, num2: Int) -> Int): Int {

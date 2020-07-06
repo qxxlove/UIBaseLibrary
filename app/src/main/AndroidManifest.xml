@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecyclerViewTwoActivity"></activity>
+        <activity android:name=".basics.NestedScrollingActivity"></activity>
+        <activity android:name=".RecyclerViewTwoActivity" />
         <activity android:name=".RecyclerViewExpendActivity" />
         <activity android:name=".basics.BitActivity" />
         <activity android:name=".MainActivity">

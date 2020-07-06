@@ -205,6 +205,12 @@ class LambdaActivity : AppCompatActivity() {
      * let   also    apply
      */
     fun initAlsoApply() {
+
+        /**
+         * let 函数
+         *   一个作用于函数：定义一个变量在一个特定作用域范围内
+         *   避免写一些判断null的操作
+         */
         "kotlin".let {
             println("原字符串：$it")         // kotlin
             it.reversed()
@@ -235,6 +241,10 @@ class LambdaActivity : AppCompatActivity() {
             println("新的字符串：$this")        // kotlin
         }
     }
+
+
+
+
 
     /**
      * run 函数
@@ -341,6 +351,8 @@ class LambdaActivity : AppCompatActivity() {
             lock.unlock()
         }
     }
+
+
 
 
     /**

@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+
+
 public class RecyclerViewTwoActivity extends AppCompatActivity {
 
     @Override

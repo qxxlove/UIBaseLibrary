@@ -29,6 +29,9 @@ import com.bool.uibaselibrary.R;
  *   主要维护mNestedScrollAxes管理滑动的方向字段。
  *
  *
+ *    果你最低支持android版本是5.0及其以上，你可以使用View、ViewGroup本身对应的NestedScrollingChild、NestedScrollingParent接口；
+ *    如果你使用AndroidX那么你就需要使用NestedScrollingChild3、NestedScrollingParent3；
+ *    如果你兼容Android5.0之前版本请使用NestedScrollingChild2、NestedScrollingParent2。
  *
  *
  *

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.bool.uibaselibrary.basics.BitActivity;
+import com.bool.uibaselibrary.basics.CustomViewActivity;
 import com.bool.uibaselibrary.bean.Student;
 import com.bool.uibaselibrary.utils.ByteUtils;
 
@@ -75,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RecyclerViewExpendActivity.class));
             }
         });
+        findViewById(R.id.act_main_tv_to_custom).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CustomViewActivity.class));
+            }
+        });
+
     }
 
     /**

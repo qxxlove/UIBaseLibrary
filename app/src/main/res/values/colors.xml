@@ -3,4 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="gray4">#666666</color>
+    <color name="gray2">#B4B4B4</color>
+
+    <color name="green2">#19BE9B</color>
+    <color name="waterwood_oracle">#E68903</color>
+    <color name="hcm_month_1">#1FB289</color>
+    <color name="hcm_month_2">#30B2B4</color>
+    <color name="hcm_month_3">#F2AD2D</color>
+    <color name="hcm_month_4">#33B1F1</color>
 </resources>

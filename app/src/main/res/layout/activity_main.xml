@@ -19,7 +19,14 @@
         android:id="@+id/act_main_tv_to_custom"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="自定义ViewGroup"
+        android:text="自定义\nViewGroup"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/act_main_tv_to_custom_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="自定义View"
         android:gravity="center"
         />
         <androidx.core.widget.NestedScrollView

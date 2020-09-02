@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
-import com.bool.uibaselibrary.basics.BitActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bool.uibaselibrary.basics.CustomViewActivity;
+import com.bool.uibaselibrary.basics.MeasureLayoutDrawActivity;
 import com.bool.uibaselibrary.bean.Student;
 import com.bool.uibaselibrary.utils.ByteUtils;
 
@@ -14,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -82,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CustomViewActivity.class));
             }
         });
+        findViewById(R.id.act_main_tv_to_custom_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MeasureLayoutDrawActivity.class));
+            }
+        });
+
+        TextView textView =  ((TextView) findViewById(R.id.act_main_tv_to_custom));
+        textView.setText("打法是的呢父\n房间爱思考的风景");
 
     }
 

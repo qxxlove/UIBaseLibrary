@@ -114,6 +114,7 @@ public class CustomViewPager extends ViewPager {
         Log.e("onLayout","子view大小:"+childCount);
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
+            Log.e("onLayout","从左边"+i * getWidth()+"开始到右边"+(i + 1) * getWidth()+"结束。"+"从上边"+t+"开始到右边"+b+"结束");
             childView.layout(i * getWidth(), t, (i + 1) * getWidth(), b);
         }
     }
@@ -161,8 +162,10 @@ public class CustomViewPager extends ViewPager {
             case MotionEvent.ACTION_MOVE:
                 Log.e("ACTION_MOVE", "scrollX=" + getScrollX());
                 scrollX = getScrollX();//相对于初始位置滑动的距离
-                //你滑动的距离加上屏幕的一半，除以屏幕宽度，就是当前图片显示的pos.如果你滑动距离超过了屏幕的一半，这个pos就加1
+                //你滑动的距离加上屏幕的一半，除以屏幕宽度，就是当前图片显示的pos.
+                // 如果你滑动距离超过了屏幕的一半，这个pos就加1
                 position = (getScrollX() + getWidth() / 2) / getWidth();
+                Log.e("ACTION_MOVE", "当前position=" + position);
 
                 /**因为加了一层ScrollView 子界面*/
                 if (position >= images.length+1) {

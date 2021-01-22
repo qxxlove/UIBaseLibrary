@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">UIBaseLibrary</string>
+
+    <string name="behavior_sample_title">com.bool.uibaselibrary.behavior.SampleTitleBehavior</string>
+    <string name="behavior_sample_header">com.bool.uibaselibrary.behavior.SampleHeaderBehavior</string>
+    <string name="behavior_recyclerview">com.bool.uibaselibrary.behavior.RecyclerViewBehavior</string>
+
+
 </resources>

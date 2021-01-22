@@ -14,10 +14,12 @@ public interface INestedScrollingChild {
      */
     void setNestedScrollingEnabled(boolean enabled);
 
+
     /**
      * @return 返回是否开启嵌套滑动
      */
     boolean isNestedScrollingEnabled();
+
 
     /**
      * 沿着指定的方向开始滑动嵌套滑动
@@ -26,15 +28,18 @@ public interface INestedScrollingChild {
      */
     boolean startNestedScroll(@ViewCompat.ScrollAxis int axes);
 
+
     /**
      * 停止嵌套滑动
      */
     void stopNestedScroll();
 
+
     /**
      * @return 返回是否有配合滑动NestedScrollingParent
      */
     boolean hasNestedScrollingParent();
+
 
     /**
      * 滑动完成后，将已经消费、剩余的滑动值分发给NestedScrollingParent
@@ -49,6 +54,7 @@ public interface INestedScrollingChild {
     boolean dispatchNestedScroll(int dxConsumed, int dyConsumed,
                                  int dxUnconsumed, int dyUnconsumed, @Nullable int[] offsetInWindow);
 
+
     /**
      * 在滑动之前，将滑动值分发给NestedScrollingParent
      * @param dx 水平方向消费的距离
@@ -61,6 +67,7 @@ public interface INestedScrollingChild {
     boolean dispatchNestedPreScroll(int dx, int dy, @Nullable int[] consumed,
                                     @Nullable int[] offsetInWindow);
 
+
     /**
      * 将惯性滑动的速度和NestedScrollingChild自身是否需要消费此惯性滑动分发给NestedScrollingParent
      * @param velocityX 水平方向的速度
@@ -69,6 +76,7 @@ public interface INestedScrollingChild {
      * @return 返回NestedScrollingParent是否消费全部惯性滑动
      */
     boolean dispatchNestedFling(float velocityX, float velocityY, boolean consumed);
+
 
     /**
      * 在惯性滑动之前，将惯性滑动值分发给NestedScrollingParent
@@ -79,11 +87,16 @@ public interface INestedScrollingChild {
     boolean dispatchNestedPreFling(float velocityX, float velocityY);
 
 
+
    /*
      下面是NestedScrollingChildHelper 源码，只是为了看日志说明
-     ① startNestedScroll 这个方法首先会判断是否已经找到了配合处理滑动的NestedScrollingParent、若找到了则返回true，
-     否则会判断是否开启嵌套滑动，若开启了则通过构造函数注入的View来循环往上层寻找配合处理滑动的NestedScrollingParent，
-     循环条件是通过ViewParentCompat这个兼容类判断p是否实现NestedScrollingParent，
+
+
+     ① startNestedScroll 这个方法首先会判断是否已经找到了配合处理滑动的NestedScrollingParent、
+     若找到了则返回true，
+     否则会判断是否开启嵌套滑动，
+     若开启了则通过构造函数注入的View来循环往上层寻找配合处理滑动的NestedScrollingParent，
+     循环条件是通过ViewParentCompat这个兼容类 判断p(父view)是否实现NestedScrollingParent，
      若是则将p转为NestedScrollingParent类型调用onStartNestedScroll()方法
      如果返回true则证明找配合处理滑动的NestedScrollingParent，
      所以接下来同样借助ViewParentCompat调用NestedScrollingParent的onNestedScrollAccepted()。
@@ -118,11 +131,16 @@ public interface INestedScrollingChild {
 
 
     ② dispatchNestedPreScroll 方法源码
-      这个方法首先会判断是否开启嵌套滑动并找到配合处理滑动的NestedScrollingParent，
+      这个方法首先会判断是否开启嵌套滑动 并 找到配合处理滑动的NestedScrollingParent，
       若符合这两个条件则会根据参数dx、dy滑动值判断是否有水平或垂直方向滑动，
-      若有滑动调用mView.getLocationInWindow()将View当前的在Window上的x、y坐标值赋值进offsetInWindow数组并以startX、startY记录，接下来初始化输出数组consumed、并通过ViewParentCompat调用NestedScrollingParent的onNestedPreScroll()，
-      再次调用mView.getLocationInWindow()将调用NestedScrollingParent的onNestedPreScroll()后的View在Window上的x、y坐标值赋值进offsetInWindow数组并与之前记录好的startX、startY相减计算得出偏移量，
-      接着以consumed数组的两个元素的值有其中一个不为0作为boolean值返回，若条件为true说明NestedScrollingParent消耗的部分或者全部滑动值。
+      若有滑动 调用mView.getLocationInWindow()将View当前的在Window上的x、y坐标值赋值进offsetInWindow数组
+      并以startX、startY记录，接下来初始化输出数组consumed、
+      并通过ViewParentCompat调用NestedScrollingParent的onNestedPreScroll()，
+      再次调用mView.getLocationInWindow()
+      将调用NestedScrollingParent的onNestedPreScroll()后的View在Window上的x、y坐标值
+      赋值进offsetInWindow数组并与之前记录好的startX、startY相减计算得出偏移量，
+      接着以consumed数组的两个元素的值有其中一个不为0作为boolean值返回，
+      若条件为true说明NestedScrollingParent消耗的部分或者全部滑动值。
 
 
      public boolean dispatchNestedPreScroll(int dx, int dy, int[] consumed, int[] offsetInWindow) {
@@ -200,8 +218,10 @@ public interface INestedScrollingChild {
         return false;
     }
 
+
    ④ dispatchNestedPreFling()、dispatchNestedFling() 方法
-     这两方法都是通过ViewParentCompat调用NestedScrollingParent对应的fling方法来返回NestedScrollingParent是否消费全部惯性滑动。
+     这两方法都是通过ViewParentCompat调用NestedScrollingParent对应的fling方法
+     来返回NestedScrollingParent是否消费全部惯性滑动。
 
      public boolean dispatchNestedPreFling(float velocityX, float velocityY) {
         if (isNestedScrollingEnabled() && mNestedScrollingParent != null) {

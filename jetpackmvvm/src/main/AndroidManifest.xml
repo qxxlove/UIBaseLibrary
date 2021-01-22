@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".navigation.TestActivity"></activity>
+        <activity android:name=".navigation.NavHostActivity" />
+        <activity android:name=".viewmodel.ui.LeftAndRightActivity"></activity>
+        <activity android:name=".viewmodel.ui.TimerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

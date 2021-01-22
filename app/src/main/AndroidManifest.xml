@@ -10,7 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".basics.MeasureLayoutDrawActivity"></activity>
+        <activity android:name=".ui.SimpleBehaviorTwoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".ui.SimpleBehaviorActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".basics.NestedScrollTwoActivity" />
+        <activity android:name=".basics.MeasureLayoutDrawActivity" />
         <activity android:name=".basics.CustomViewActivity" />
         <activity android:name=".basics.NestedScrollingActivity" />
         <activity android:name=".RecyclerViewTwoActivity" />

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/share_graph_nav"
+    app:startDestination="@id/mainFragment">
+
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.bool.jetpackmvvm.navigation.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <!--app:destination: 指定要跳转到的Fragment的id
+            app:id 定义这个action的id， 代码里执行跳转时要用到-->
+        <action
+            android:id="@+id/action_mainFragment_to_leftFragment"
+            app:destination="@id/leftFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_rightFragment"
+            app:destination="@id/rightFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_testActivity"
+            app:destination="@id/testActivity"/>
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""'
+
+
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/leftFragment"
+        android:name="com.bool.jetpackmvvm.viewmodel.ui.LeftFragment"
+        android:label="LeftFragment" >
+        <action
+            android:id="@+id/action_leftFragment_to_rightFragment"
+            app:destination="@id/rightFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="age"
+            app:argType="string"
+            android:defaultValue='""' />
+    </fragment>
+    <fragment
+        android:id="@+id/rightFragment"
+        android:name="com.bool.jetpackmvvm.viewmodel.ui.RightFragment"
+        android:label="RightFragment" />
+    <activity
+        android:id="@+id/testActivity"
+        android:name="com.bool.jetpackmvvm.navigation.TestActivity"
+        android:label="activity_test"
+        tools:layout="@layout/activity_test" />
+</navigation>

@@ -58,35 +58,33 @@ public class CustomView extends View {
         resultHeight=myMeasure(specHMode,specHSize,Dp2PxUtil.dip2px(mContext,300));
         setMeasuredDimension(resultWidth,resultHeight);
 */
+        /**设置测量大小*/
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
         int mode = MeasureSpec.getMode(heightMeasureSpec);
         int size = MeasureSpec.getSize(heightMeasureSpec);
-        Log.e("onMeasure", "300dp:" + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300,
+        Log.e("onMeasure", "sizeHHHH:" + size);
+        Log.e("onMeasure", "modeHHHH:" + mode);
+
+
+        Log.e("onMeasure", "300dpHHHH:" +
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300,
                 getResources().getDisplayMetrics()));
-        Log.e("onMeasure", "AT_MOST:" + MeasureSpec.AT_MOST);
-        Log.e("onMeasure", "size:" + size);
-        Log.e("onMeasure", "mode:" + mode);
+        Log.e("onMeasure", "AT_MOSTHHHH:" + MeasureSpec.AT_MOST);
+
 
         /**外层的ViewGroup的高度是300dp，里面的View高度是Wrap_content，
-         * 那么对应的是表格中的第四行、第二列，那么传给里面的view的size=300dp，mode= AT_MOST，是不是这样呢，
+         * 那么对应的是表格中的第四行、第二列，那么传给里面的view的size=300dp，mode= AT_MOST，是不是这样呢？
          * 咋们输出log来验证下:     但是600 是做什么的？   600是转换后的px。
-         * 2020-07-09 16:49:00.585 13836-13836/com.bool.uibaselibrary E/onMeasure: 300dp:600.0
-         * 2020-07-09 16:49:00.585 13836-13836/com.bool.uibaselibrary E/onMeasure: AT_MOST:-2147483648
-         * 2020-07-09 16:49:00.585 13836-13836/com.bool.uibaselibrary E/onMeasure: size:600
-         * 2020-07-09 16:49:00.585 13836-13836/com.bool.uibaselibrary E/onMeasure: mode:-2147483648
-         * 2020-07-09 16:49:00.606 13836-13836/com.bool.uibaselibrary E/onMeasure: 300dp:600.0
-         * 2020-07-09 16:49:00.606 13836-13836/com.bool.uibaselibrary E/onMeasure: AT_MOST:-2147483648
-         * 2020-07-09 16:49:00.606 13836-13836/com.bool.uibaselibrary E/onMeasure: size:600
-         * 2020-07-09 16:49:00.606 13836-13836/com.bool.uibaselibrary E/onMeasure: mode:-2147483648
+         *
          *
          */
 
         int modeW = MeasureSpec.getMode(widthMeasureSpec);
         int sizeW = MeasureSpec.getSize(widthMeasureSpec);
-        Log.e("onMeasure", "size:" + sizeW);
-        Log.e("onMeasure", "AT_MOST:" + MeasureSpec.AT_MOST);
-        Log.e("onMeasure", "size:" + sizeW);
-        Log.e("onMeasure", "mode:" + modeW);
+        Log.e("onMeasure", "sizeWWWWWWWW:" + sizeW);
+        Log.e("onMeasure", "AT_MOSTWWWWWWWW:" + MeasureSpec.AT_MOST);
+        Log.e("onMeasure", "sizeWWWWWWWW:" + sizeW);
+        Log.e("onMeasure", "modeWWWWWWWW:" + modeW);
 
     }
 
@@ -107,4 +105,37 @@ public class CustomView extends View {
         }
         return result;
     }
+
+
+
+    /**
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeHHHH:600
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: modeHHHH:-2147483648
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: 300dpHHHH:600.0
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: AT_MOSTHHHH:-2147483648
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeWWWWWWWW:720
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: AT_MOSTWWWWWWWW:-2147483648
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeWWWWWWWW:720
+     * 09-03 16:19:52.953 7528-7528/com.bool.uibaselibrary E/onMeasure: modeWWWWWWWW:-2147483648
+     *
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeHHHH:600
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: modeHHHH:-2147483648
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: 300dpHHHH:600.0
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: AT_MOSTHHHH:-2147483648
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeWWWWWWWW:720
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: AT_MOSTWWWWWWWW:-2147483648
+     * 09-03 16:19:52.972 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeWWWWWWWW:720
+     * 09-03 16:19:52.973 7528-7528/com.bool.uibaselibrary E/onMeasure: modeWWWWWWWW:-2147483648
+     *
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeHHHH:600
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: modeHHHH:-2147483648
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: 300dpHHHH:600.0
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: AT_MOSTHHHH:-2147483648
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeWWWWWWWW:720
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: AT_MOSTWWWWWWWW:-2147483648
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: sizeWWWWWWWW:720
+     * 09-03 16:19:52.980 7528-7528/com.bool.uibaselibrary E/onMeasure: modeWWWWWWWW:-2147483648
+     *
+     * */
+
 }

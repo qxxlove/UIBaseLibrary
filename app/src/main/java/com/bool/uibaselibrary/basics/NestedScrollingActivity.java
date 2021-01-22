@@ -1,12 +1,12 @@
 package com.bool.uibaselibrary.basics;
 
+import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.NestedScrollingChild;
 import androidx.core.view.NestedScrollingChildHelper;
-import androidx.core.view.NestedScrollingParent;
-
-import android.os.Bundle;
+import androidx.core.view.NestedScrollingParentHelper;
 
 import com.bool.uibaselibrary.R;
 
@@ -24,9 +24,19 @@ import com.bool.uibaselibrary.R;
  *   而方法逻辑就是对应的NestedScrollingChildHelper和NestedScrollingParentHelper的具体方法实现，
  *   所以View、ViewGroup的NestedScrolling机制相关内容，请自行查看源码。
  *
+ *
  *   NestedScrollingChildHelper对NestedScrollingChild的接口方法做了代理，您可以结合实际情况借助它来实现。
+ *   如：  public class MyScrollView extends View implements NestedScrollingChild{
+ *     ...
+ *     @Override
+ *     public boolean startNestedScroll(int axes) {
+ *         return mChildHelper.startNestedScroll(axes);
+ *     }
+ *     }
  *   NestedScrollingParentHelper只提供对应NestedScrollingParent相关的onNestedScrollAccepted()和onStopNestedScroll()方法，
  *   主要维护mNestedScrollAxes管理滑动的方向字段。
+ *
+ *
  *
  *
  *    果你最低支持android版本是5.0及其以上，你可以使用View、ViewGroup本身对应的NestedScrollingChild、NestedScrollingParent接口；
@@ -48,12 +58,15 @@ import com.bool.uibaselibrary.R;
  *    3. 属于传统方法：内部拦截法(requestDisallowInterceptTouchEvent)和外部拦截法。
  *
  *
+ *
+ *
  * */
 
 public class NestedScrollingActivity extends AppCompatActivity  implements NestedScrollingChild{
 
     /**需要实例化，否则报空*/
     private NestedScrollingChildHelper nestedScrollingChildHelper;
+    private NestedScrollingParentHelper nestedScrollingParentHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

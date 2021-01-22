@@ -29,6 +29,40 @@
         android:text="自定义View"
         android:gravity="center"
         />
+    <TextView
+        android:id="@+id/act_main_tv_to_nested"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="NestedScrollView"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/act_main_tv_to_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Behavior"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/act_main_tv_to_behavior_two"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="BehaviorTwo"
+        android:gravity="center"
+        />
+
+    <ProgressBar
+    android:id="@+id/pb_progressbar"
+    style="@style/mProgressBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:progressDrawable="@drawable/main_pb_bg"
+    android:max="100"
+    android:progress="40"/>
+
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

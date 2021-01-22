@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigation.NavHostActivity">
+
+    <!--
+         android:name 是NavHostFragment,它实现了NavHost,这是一个用于放置管理destination的空视图
+         app:navGraph: 用于将这个NavHostFragment和nav_graph.xml关联起来
+         app:defaultNavHost:设置为true，则该Fragment会自动处理系统返回键即当用户按下手机的返回按钮时，
+         系统能自动将当前所展示的Fragment退出
+         -->
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost= "true"
+        app:navGraph="@navigation/share_graph_nav"/>
+</LinearLayout>

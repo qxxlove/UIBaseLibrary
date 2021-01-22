@@ -305,7 +305,7 @@ class MainActivity : AppCompatActivity(), Clicker {
 
     /**
      * 非空语句
-    Evils其实不是一个操作符，而是evil的复数，而evil的意思在这里可以理解为屏蔽、安全的操作符，这样的操作符有三种：
+     Evils其实不是一个操作符，而是evil的复数，而evil的意思在这里可以理解为屏蔽、安全的操作符，这样的操作符有三种：
     ?: 这个操作符表示在判断一个可空类型时，会返回一个我们自己设定好的默认值.
     !! 这个操作符表示在判断一个可空类型时，会显示的抛出空引用异常（NullPointException）.
     as? 这个操作符表示为安全的类型转换.
@@ -343,6 +343,14 @@ class MainActivity : AppCompatActivity(), Clicker {
         initLet()
 
     }
+
+    // 如果 str 的内容不是数字返回 null：
+    fun parseInt(str: String): Int? {
+        // ……
+        return 0;
+    }
+
+
 
     /**
      * 双冒号使用：

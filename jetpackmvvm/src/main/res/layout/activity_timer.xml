@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".viewmodel.ui.TimerActivity">
+
+    <TextView
+        android:id="@+id/tv_timer_result"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/app_name"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tv_timer_liveData"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/app_name"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/tv_timer_stop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="停止计时"
+        android:gravity="center"
+        />
+
+</LinearLayout>

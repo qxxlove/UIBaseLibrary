@@ -9,19 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".grammar.LambdaBaseActivity"></activity>
+
+        <activity android:name=".grammar.LambdaBaseActivity" />
         <activity android:name=".grammar.ObjectActivity" />
         <activity android:name=".coroutine.CoroutineActivity">
+
+        </activity>
+        <activity android:name=".ListAndArrayActivity" />
+        <activity android:name=".LambdaActivity" />
+        <activity android:name=".JavaActivity" />
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListAndArrayActivity" />
-        <activity android:name=".LambdaActivity" />
-        <activity android:name=".JavaActivity" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

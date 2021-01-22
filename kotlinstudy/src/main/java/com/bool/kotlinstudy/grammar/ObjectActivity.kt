@@ -3,6 +3,8 @@ package com.bool.kotlinstudy.grammar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bool.kotlinstudy.R
+import com.bool.kotlinstudy.review.ClassBase
+import com.bool.kotlinstudy.review.ClassBaseTwo
 
 
 /**
@@ -51,6 +53,19 @@ import com.bool.kotlinstudy.R
             eg： startActivity(Intent(this@KotlinActivity, MainActivity::class.java))
 
 
+    规范：
+          绝不在 (、 [ 之后或者 ]、 ) 之前留空格。
+          绝不在. 或者 ?. 左右留空格：foo.bar().filter { it > 2 }.joinToString(), foo?.bar()
+          在 // 之后留⼀个空格：// 这是⼀条注释
+         不要在⽤于指定类型参数的尖括号前后留空格：class Map<K, V> { …… }
+         不要在 :: 前后留空格：Foo::class、 String::length
+         不要在⽤于标记可空类型的 ? 前留空格：String?
+         作为⼀般规则，避免任何类型的⽔平对⻬。
+         将标识符重命名为不同⻓度的名称不应该影响声明或者任何⽤法的格式。
+
+
+
+
  *
  *
  */
@@ -60,6 +75,10 @@ class ObjectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_object)
+
+        val value: Any = ClassBaseTwo::class.java
+
+
     }
 
 
@@ -102,6 +121,7 @@ class ObjectActivity : AppCompatActivity() {
                         instance ?: SingletonTwo(property).also { instance = it }
                     }
         }
+
     }
 
 

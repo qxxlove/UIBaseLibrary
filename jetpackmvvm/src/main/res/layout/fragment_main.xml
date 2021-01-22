@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".navigation.MainFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        android:id="@+id/btnToSecondFragment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="跳转LeftFragment"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/btnToRightFragment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="跳转RightFragment"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/btnToActivity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="跳转测试Activity"
+        android:gravity="center"
+        />
+
+</LinearLayout>

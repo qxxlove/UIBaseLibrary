@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.bool.jetpackmvvm.R;
 import com.bool.jetpackmvvm.viewmodel.model.ShareViewModel;
@@ -37,6 +38,14 @@ public class RightFragment extends Fragment {
             @Override
             public void onClick(View v) {
                getActivity().startActivity(new Intent(getActivity(),TimerActivity.class));
+            }
+        });
+
+        view.findViewById(R.id.tv_global).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //does not have a NavController set
+                Navigation.findNavController(v).navigate(R.id.action_global_mainFragment);
             }
         });
     }

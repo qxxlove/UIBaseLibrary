@@ -14,6 +14,7 @@ import com.bool.uibaselibrary.basics.NestedScrollTwoActivity;
 import com.bool.uibaselibrary.bean.Student;
 import com.bool.uibaselibrary.ui.SimpleBehaviorActivity;
 import com.bool.uibaselibrary.ui.SimpleBehaviorTwoActivity;
+import com.bool.uibaselibrary.ui.VerticalScreenActivity;
 import com.bool.uibaselibrary.utils.ByteUtils;
 
 import java.util.ArrayList;
@@ -108,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SimpleBehaviorTwoActivity.class));
+            }
+        });
+        findViewById(R.id.act_main_tv_to_screen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, VerticalScreenActivity.class));
             }
         });
         TextView textView =  ((TextView) findViewById(R.id.act_main_tv_to_custom));

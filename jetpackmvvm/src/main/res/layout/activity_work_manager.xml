@@ -5,27 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".workmanager.WorkManagerActivity">
 
     <TextView
-        android:id="@+id/tv_one"
+        android:id="@+id/tv_start_work"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="navigation界面"
+        android:text="开始任务"
         android:gravity="center"
-       />
+        />
+
     <TextView
-        android:id="@+id/tv_two"
+        android:id="@+id/tv_end_work"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="lifecycle界面"
+        android:text="取消任务"
         android:gravity="center"
         />
     <TextView
-        android:id="@+id/tv_room"
+        android:id="@+id/tv_work_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Room界面"
+        android:text="查看work信息"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/tv_work_transmission"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="work传输信息"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/tv_work_only"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="work为唯一工作"
         android:gravity="center"
         />
 

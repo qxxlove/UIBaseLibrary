@@ -79,6 +79,14 @@ public class MainFragment extends Fragment {
                         setUserNmae("Shaoyi")
                         .setAge(20)
                         .build().toBundle();*/
+
+                 /**直接用Bundle*/
+                /*Bundle bundle = new Bundle();
+                bundle.putString("user_name","shaoyi");
+                bundle.putInt("age",0);
+                Navigation.findNavController(v)
+                        .navigate(R.id.action_mainFragment_to_leftFragment,bundle);*/
+
                 Navigation.findNavController(v)
                         .navigate(R.id.action_mainFragment_to_leftFragment);
             }

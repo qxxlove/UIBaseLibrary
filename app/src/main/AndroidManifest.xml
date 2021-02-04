@@ -10,11 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SimpleBehaviorTwoActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".ui.VerticalScreenActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".ui.HorizontalScreenActivity"
+            android:screenOrientation="landscape"
+            />
+        <activity
+            android:name=".ui.SimpleBehaviorTwoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ui.SimpleBehaviorActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".basics.NestedScrollTwoActivity" />
         <activity android:name=".basics.MeasureLayoutDrawActivity" />
         <activity android:name=".basics.CustomViewActivity" />

@@ -3,15 +3,20 @@
     package="com.bool.jetpackmvvm">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".navigation.TestActivity"></activity>
+        <activity android:name=".room.RoomActivity"></activity>
+        <activity android:name=".pageing.PageingActivity" />
+        <activity android:name=".workmanager.WorkManagerActivity" />
+        <activity android:name=".lifecycle.LifecycleActivity" />
+        <activity android:name=".navigation.TestActivity" />
         <activity android:name=".navigation.NavHostActivity" />
-        <activity android:name=".viewmodel.ui.LeftAndRightActivity"></activity>
+        <activity android:name=".viewmodel.ui.LeftAndRightActivity" />
         <activity android:name=".viewmodel.ui.TimerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -20,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".lifecycle.MyLifeService" />
     </application>
 
 </manifest>

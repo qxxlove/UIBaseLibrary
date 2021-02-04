@@ -16,6 +16,12 @@
         android:gravity="center"
         />
 
-
+    <TextView
+        android:id="@+id/tv_global"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="我是全局"
+        android:gravity="center"
+        />
 
 </LinearLayout>

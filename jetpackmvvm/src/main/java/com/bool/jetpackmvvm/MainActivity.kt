@@ -3,7 +3,9 @@ package com.bool.jetpackmvvm
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bool.jetpackmvvm.lifecycle.LifecycleActivity
 import com.bool.jetpackmvvm.navigation.NavHostActivity
+import com.bool.jetpackmvvm.room.RoomActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -33,6 +35,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent()
             //获取intent对象
             intent.setClass(this, NavHostActivity::class.java)
+            // 获取class是使用::反射
+            startActivity(intent) }
+        tv_two.setOnClickListener {
+            val intent = Intent()
+            //获取intent对象
+            intent.setClass(this, LifecycleActivity::class.java)
+            // 获取class是使用::反射
+            startActivity(intent) }
+        tv_room.setOnClickListener {
+            val intent = Intent()
+            //获取intent对象
+            intent.setClass(this, RoomActivity::class.java)
             // 获取class是使用::反射
             startActivity(intent) }
     }

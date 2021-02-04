@@ -55,4 +55,6 @@
         android:name="com.bool.jetpackmvvm.navigation.TestActivity"
         android:label="activity_test"
         tools:layout="@layout/activity_test" />
+    <!--全局id-->
+    <action android:id="@+id/action_global_mainFragment" app:destination="@id/mainFragment" />
 </navigation>

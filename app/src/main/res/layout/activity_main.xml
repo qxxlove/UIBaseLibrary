@@ -50,6 +50,13 @@
         android:text="BehaviorTwo"
         android:gravity="center"
         />
+    <TextView
+        android:id="@+id/act_main_tv_to_screen"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="横竖屏"
+        android:gravity="center"
+        />
 
     <ProgressBar
     android:id="@+id/pb_progressbar"
